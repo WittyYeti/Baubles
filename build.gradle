@@ -64,8 +64,13 @@ task sourcesJar(type: Jar) {
 }
 
 publishing {
+    tasks.publish.dependsOn 'build'
     publications {
         mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            
             artifact apiJar
         }		
     }
